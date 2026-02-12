@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    About
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <style>
+        p {
+          background-color: darkslategrey !important;  
+          color: white;
+        }
+    </style>
+    <script>
+        console.log("Internal JS on django!")
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h1 style="background-color: darksalmon; letter-spacing: 5px;">About Page using Jinja!</h1>
+    <div class="photos">
+        <img src="https://picsum.photos/600/300" alt="Picsum Random Photo!">
+        <img src="{% static 'images/external-img.jpg' %}" alt="Internal Image">
+    </div>
+    <p class="custom-p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente cum facere quaerat in tempora fuga quasi deserunt sint officiis magni, enim, quam culpa alias animi, sit mollitia molestiae ex. Incidunt, voluptatem a maiores natus assumenda dolore commodi delectus et suscipit autem debitis asperiores saepe pariatur. Fugit voluptatibus harum beatae eligendi repellendus suscipit amet, animi natus sunt. Quibusdam dicta, rem sapiente quidem reiciendis error id qui aliquid voluptates minus architecto nemo explicabo recusandae vero dolore accusamus quas vitae sequi ducimus eligendi dignissimos quam at. Iusto hic vel veniam quis tempore eligendi dolores. Nostrum.</p>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/about.js' %}"></script>
+{% endblock %}
