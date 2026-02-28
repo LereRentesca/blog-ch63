@@ -12,7 +12,38 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'post_list' %}">Posts</a>
+        </li>
+        {% if user.is_authenticated %}
+          <!-- Insert right here the views that are for logged in users  -->
+          <li class="nav-item">
+           <a class="nav-link" href="{% url 'post_drafts' %}">Drafts</a>
+         </li>
+           <li class="nav-item">
+            <a class="nav-link" href="{% url 'post_new' %}">New Post</a>
+          </li>
+           <li class="nav-item">
+              <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Log Out" class="nav-link">
+              </form>
+           </li>
+        {% else %}
+          <!-- Insert right here the views for regular users -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+          </li>
+        {% endif %}
       </ul>
+      {% if user.is_authenticated %}
+      <div class="d-flex" style="margin-right: 15px;">
+        <span class="badge text-bg-info">{{ user.username }}</span>
+      </div>
+      {% endif %}
     </div>
   </div>
 </nav>
